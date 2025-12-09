@@ -1,0 +1,280 @@
+
+body {
+    background-color: #0a0a1a;
+    color: #00ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* Contenedor principal */
+.container {
+    width: 100%;
+    max-width: 800px;
+    border: 4px solid #00ffff;
+    border-radius: 8px;
+    background-color: #000022;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    padding: 20px;
+    position: relative;
+}
+
+/* Efectos CRT */
+.scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 255, 255, 0.03) 50%,
+        rgba(0, 0, 0, 0) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.crt::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0.3;
+    z-index: 2;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+}
+
+/* Header y título */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed #00ffff;
+    position: relative;
+    z-index: 3;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    animation: blink 3s infinite;
+}
+
+/* Puntuación y nivel */
+.score-level-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: rgba(0, 20, 40, 0.8);
+    border: 2px solid #00ffff;
+    border-radius: 5px;
+    position: relative;
+    z-index: 3;
+}
+
+.score-box, .level-box {
+    text-align: center;
+}
+
+.score-label, .level-label {
+    font-size: 1.2rem;
+    color: #ffff00;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.score-value, .level-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+    animation: blink 3s infinite;
+}
+
+/* Separadores */
+.separator {
+    width: 100%;
+    height: 2px;
+    background-color: #00ffff;
+    margin: 25px 0;
+    box-shadow: 0 0 5px #00ffff;
+}
+
+/* Menú principal */
+.menu {
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 3;
+}
+
+.menu-title {
+    font-size: 1.8rem;
+    color: #ffff00;
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.menu-items {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.menu-item {
+    font-size: 1.8rem;
+    padding: 10px 30px;
+    background-color: rgba(0, 40, 80, 0.7);
+    border: 2px solid #00ffff;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu-item:hover {
+    background-color: rgba(0, 80, 160, 0.9);
+    color: #ffff00;
+    box-shadow: 0 0 10px #00ffff;
+    transform: translateY(-2px);
+}
+
+/* Sección de niveles */
+.levels-section {
+    position: relative;
+    z-index: 3;
+}
+
+.levels-title {
+    font-size: 1.8rem;
+    color: #ffff00;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.levels-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.level-card {
+    width: 180px;
+    padding: 15px;
+    background-color: rgba(20, 0, 40, 0.8);
+    border: 2px solid #ff00ff;
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.level-card:hover {
+    box-shadow: 0 0 15px #ff00ff;
+    transform: translateY(-5px);
+}
+
+.level-name {
+    font-size: 1.5rem;
+    color: #00ffff;
+    margin-bottom: 10px;
+}
+
+.level-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffff00;
+    text-shadow: 0 0 5px #ffff00;
+    animation: blink 3s infinite;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px dashed #00ffff;
+    color: #8888ff;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 3;
+}
+
+/* Animaciones */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin: 10px;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .score-level-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .menu-item {
+        width: 250px;
+        font-size: 1.5rem;
+    }
+    
+    .levels-container {
+        gap: 15px;
+    }
+    
+    .level-card {
+        width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .menu-item {
+        width: 220px;
+        font-size: 1.3rem;
+    }
+    
+    .level-card {
+        width: 130px;
+    }
+}
